@@ -28,10 +28,10 @@ public interface LBankJavaApiService {
 	
 	/**
 	 * 下单
-	 * @param symbol交易对
-	 * @param type委托买卖类型buy/sell
-	 * @param price下单价格
-	 * @param amount交易数量
+	 * @param symbol 交易对
+	 * @param type 委托买卖类型buy/sell
+	 * @param price 下单价格
+	 * @param amount 交易数量
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -40,8 +40,8 @@ public interface LBankJavaApiService {
 
 	/**
 	 * 撤销订单
-	 * @param symbol交易对
-	 * @param order_id订单id
+	 * @param symbol 交易对
+	 * @param order_id 订单id
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -50,8 +50,8 @@ public interface LBankJavaApiService {
 	
 	/**
 	 * 查询订单
-	 * @param symbol交易对
-	 * @param order_id订单id
+	 * @param symbol 交易对
+	 * @param order_id 订单id
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -60,9 +60,9 @@ public interface LBankJavaApiService {
 	
 	/**
 	 * 查询订单历史
-	 * @param symbol
-	 * @param current_page
-	 * @param page_length
+	 * @param symbol 交易对eth_btc:以太坊； zec_btc:零币
+	 * @param current_page 当前页码
+	 * @param page_length 每页数据条数(不得小于1,不得大于200)
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -79,9 +79,9 @@ public interface LBankJavaApiService {
 
 	/**
 	 * 获取用户开放订单
-	 * @param symbol
-	 * @param current_page
-	 * @param page_length
+	 * @param symbol 交易对eth_btc:以太坊； zec_btc:零币
+	 * @param current_page 当前页码
+	 * @param page_length 每页数据条数(不得小于1,不得大于200)
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -90,7 +90,7 @@ public interface LBankJavaApiService {
 
 	/**
 	 * 获取LBank币币行情数据
-	 * @param symbol币对 
+	 * @param symbol 币对 
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -106,9 +106,9 @@ public interface LBankJavaApiService {
 	Call<List<String>> getCurrencyPairs();
 	/**
 	 * 获取LBank市场深度
-	 * @param symbol币对
-	 * @param size返回的条数(1-60)
-	 * @param merge深度: 0,1
+	 * @param symbol 币对
+	 * @param size 返回的条数(1-60)
+	 * @param merge 深度: 0,1
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -117,9 +117,9 @@ public interface LBankJavaApiService {
 	
 	/**
 	 * 获取LBank历史交易信息
-	 * @param symbol币对 
-	 * @param size返回的条数(1-600)
-	 * @param time返回时间戳之后 size 条数据，为空则返回最新 size 条数据
+	 * @param symbol 币对 
+	 * @param size 返回的条数(1-600)
+	 * @param time 返回时间戳之后 size 条数据，为空则返回最新 size 条数据
 	 * @return
 	 */
 	@Headers("contentType:application/x-www-form-urlencoded")
@@ -128,9 +128,9 @@ public interface LBankJavaApiService {
 
 	/**
 	 * 获取K线数据
-	 * @param symbol币对
-	 * @param size返回的条数(1-2880)
-	 * @param typeminute1：1分钟
+	 * @param symbol 币对
+	 * @param size 返回的条数(1-2880)
+	 * @param type minute1：1分钟
 				minute5：5分钟
 				minute15：15分钟
 				minute30：30分钟
