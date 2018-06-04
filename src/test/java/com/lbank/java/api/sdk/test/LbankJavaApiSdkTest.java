@@ -1,4 +1,4 @@
-package test;
+package com.lbank.java.api.sdk.test;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import com.lbank.java.api.sdk.entity.TicketMessage;
 import com.lbank.java.api.sdk.entity.Trades;
 import com.lbank.java.api.sdk.service.impl.LBankJavaApiSdkServiceImpl;
 
-public class Test001 {
+public class LbankJavaApiSdkTest {
 
 	public static void main(String[] args) throws Exception {
 		String apiKey = "4fe12d15-2050-46b3-8f82-c0c3347872c8";
@@ -20,9 +20,9 @@ public class Test001 {
 //		System.out.println(createOrder);
 //		Map<String, String> createOrder2 = LBankJavaApiSdkServiceImpl.createOrder("eth_btc", "sell", "0.011", "100");
 //		System.out.println(createOrder2);
-//		Map<String, String> cancelOrder = LBankJavaApiSdkServiceImpl.cancelOrder("eth_btc", "");
+//		Map<String, String> cancelOrder = LBankJavaApiSdkServiceImpl.cancelOrder("eth_btc", "de067674-5f8b-456d-a418-f7c62933a56e");
 //		System.out.println(cancelOrder);
-//		Map<String, Object> ordersInfo = LBankJavaApiSdkServiceImpl.getOrdersInfo("eth_btc", "");
+//		Map<String, Object> ordersInfo = LBankJavaApiSdkServiceImpl.getOrdersInfo("eth_btc", "de067674-5f8b-456d-a418-f7c62933a56e");
 //		System.out.println(ordersInfo);
 //		Map<String, Object> ordersInfoHistory = LBankJavaApiSdkServiceImpl.getOrdersInfoHistory("eth_btc","1", "10");
 //		System.out.println(ordersInfoHistory);
@@ -34,16 +34,16 @@ public class Test001 {
 //		ObjectMapper m = new ObjectMapper();
 //		TicketMessage convertValue = m.convertValue(ticker, TicketMessage.class);
 //		System.out.println(convertValue);
-		Object ticker = LBankJavaApiSdkServiceImpl.getTicker("all");
-		List<TicketMessage> ls = (List<TicketMessage>) ticker;
-		System.out.println(ls);
+//		Object tickerList = LBankJavaApiSdkServiceImpl.getTicker("all");
+//		List<TicketMessage> ls = (List<TicketMessage>) tickerList;
+//		System.out.println(ls);
 //		List<String> currencyPairs = LBankJavaApiSdkServiceImpl.getCurrencyPairs();
 //		System.out.println(currencyPairs);
 //		Map<String, Object> depth = LBankJavaApiSdkServiceImpl.getDepth("eth_btc", 1, 1);
 //		System.out.println(depth);
 //		List<Trades> trades = LBankJavaApiSdkServiceImpl.getTrades("eth_btc", 1, null);
 //		System.out.println(trades);
-//		List<String[]> kline = LBankJavaApiSdkServiceImpl.getKline("eth_btc", 1, "hour1", null);
-//		System.out.println(kline);
+		List<String[]> kline = LBankJavaApiSdkServiceImpl.getKline("eth_btc", 1, "hour12", null);
+		System.out.println(kline);
 	}
 }
