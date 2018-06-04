@@ -10,13 +10,12 @@ import com.lbank.java.api.sdk.util.LBankJavaApiSdkUtil;
 
 import java.io.IOException;
 import java.util.Objects;
+
 /**
- * 
  * @author chen.li
- *
  */
 public class AuthenticationInterceptor implements Interceptor {
-	//用户apikey
+    //用户apikey
     private final String apiKey;
     //用户私钥
     private final String secret;
@@ -32,13 +31,13 @@ public class AuthenticationInterceptor implements Interceptor {
         Request.Builder newRequestBuilder = original.newBuilder();
         //参数拦截器只在非get请求中添加
         String method = original.method();
-        if(StringUtils.equals("GET", method)) {
-        	return chain.proceed(original); 
+        if (StringUtils.equals("GET", method)) {
+            return chain.proceed(original);
         }
         //加密请求参数获取数字签名
         String payload = original.url().query();
-    	String sign = LBankJavaApiSdkUtil.getMD5(payload, apiKey, secret);
-    	//追加亲求参数
+        String sign = LBankJavaApiSdkUtil.getMD5(payload, apiKey, secret);
+        //追加亲求参数
         HttpUrl signedUrl = original.url().newBuilder().addQueryParameter("api_key", apiKey).addQueryParameter("sign", sign).build();
         newRequestBuilder.url(signedUrl);
         Request newRequest = newRequestBuilder.build();

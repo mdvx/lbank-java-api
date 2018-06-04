@@ -15,9 +15,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import java.io.IOException;
 
 /**
- * 
  * @author chen.li
- *
  */
 public class LBankJavaApiSdkServiceGenerator {
 
@@ -26,21 +24,25 @@ public class LBankJavaApiSdkServiceGenerator {
      * 初始化
      */
     private static Retrofit.Builder builder =
-        new Retrofit.Builder()
-            .baseUrl(Contant.BASE_URL)
-            .addConverterFactory(JacksonConverterFactory.create());
+            new Retrofit.Builder()
+                    .baseUrl(Contant.BASE_URL)
+                    .addConverterFactory(JacksonConverterFactory.create());
 
     private static Retrofit retrofit = builder.build();
+
     /**
      * 实例化
+     *
      * @param serviceClass
      * @return
      */
     public static <S> S createService(Class<S> serviceClass) {
         return createService(serviceClass, null, null);
     }
+
     /**
      * 实例化
+     *
      * @param serviceClass
      * @return
      */
@@ -60,6 +62,7 @@ public class LBankJavaApiSdkServiceGenerator {
 
     /**
      * 解析响应参数
+     *
      * @param call
      * @return
      * @throws Exception
