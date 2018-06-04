@@ -33,7 +33,7 @@ public class AuthenticationInterceptor implements Interceptor {
         //参数拦截器只在非get请求中添加
         String method = original.method();
         if(StringUtils.equals("GET", method)) {
-        	chain.proceed(original); 
+        	return chain.proceed(original); 
         }
         //加密请求参数获取数字签名
         String payload = original.url().query();
