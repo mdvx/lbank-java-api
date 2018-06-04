@@ -133,7 +133,7 @@ public interface LBankJavaApiService {
      */
     @Headers("contentType:application/x-www-form-urlencoded")
     @GET("/v1/trades.do")
-    Call<List<Trades>> getTrades(@Query("symbol") String symbol, @Query("size") Integer size, @Query("time") String time);
+    Call<Object> getTrades(@Query("symbol") String symbol, @Query("size") Integer size, @Query("time") String time);
 
     /**
      * 获取K线数据
@@ -157,6 +157,6 @@ public interface LBankJavaApiService {
      */
     @Headers("contentType:application/x-www-form-urlencoded")
     @GET("/v1/kline.do")
-    Call<List<String[]>> getKline(@Query("symbol") String symbol, @Query("size") Integer size, @Query("type") String type, @Query("time") String time);
+    Call<Object> getKline(@Query("symbol") String symbol, @Query("size") Integer size, @Query("type") String type, @Query("time") String time);
 
 }

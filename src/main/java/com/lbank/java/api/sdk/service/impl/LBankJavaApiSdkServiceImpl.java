@@ -183,7 +183,7 @@ public class LBankJavaApiSdkServiceImpl {
      * @param time   返回时间戳之后 size 条数据，为空则返回最新 size 条数据
      * @return
      */
-    public List<Trades> getTrades(String symbol, Integer size, String time) throws Exception {
+    public Object getTrades(String symbol, Integer size, String time) throws Exception {
         if (StringUtils.isEmpty(symbol)) {
             throw new Exception("symbol参数为空");
         }
@@ -210,7 +210,7 @@ public class LBankJavaApiSdkServiceImpl {
      * @param time   时间戳 (为空则返回当前最新 size 条数据,填写则返回时间戳之后的 size 条数据)
      * @return
      */
-    public List<String[]> getKline(String symbol, Integer size, String type, String time) throws Exception {
+    public Object getKline(String symbol, Integer size, String type, String time) throws Exception {
         if (StringUtils.isEmpty(symbol)) {
             throw new Exception("symbol参数为空");
         }
