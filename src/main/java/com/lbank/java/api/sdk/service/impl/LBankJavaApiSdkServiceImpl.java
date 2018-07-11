@@ -5,8 +5,12 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.lbank.java.api.sdk.entity.Trades;
 import com.lbank.java.api.sdk.service.LBankJavaApiService;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 /**
  * @author chen.li
@@ -221,6 +225,85 @@ public class LBankJavaApiSdkServiceImpl {
             throw new Exception("type参数为空");
         }
         return LBankJavaApiSdkServiceGenerator.executeSync(this.lBankJavaApiService.getKline(symbol, size, type, time));
+    }
+
+    
+    /**
+     * 美元对人民币的比例
+     * 
+     * @return
+     * @throws Exception 
+     */
+    public Map<String,String> getUsdToCny() throws Exception{
+    	return LBankJavaApiSdkServiceGenerator.executeSync(this.lBankJavaApiService.getUsdToCny());
+    }
+    
+    /**
+     * 币种提币参数接口
+     * 
+     * @param assetCode
+     * @return
+     * @throws Exception 
+     */
+    public List<Map<String,String>> getWithdrawConfigs(String assetCode) throws Exception{
+    	return LBankJavaApiSdkServiceGenerator.executeSync(this.lBankJavaApiService.getWithdrawConfigs(assetCode));
+    }
+    
+    /**
+     * 提币接口 (需要绑定IP,可以在lbank网页端api提现页面申请)
+     * 
+     * @param account	提币地址
+     * @param assetCode	提币币种
+     * @param amount	提币数量（对于neo，必须是整数）
+     * @param memo		对于bts、dct可能需要
+     * @param mark		用户备注(长度小于255)
+     * @param fee		提币手续费（单位：数量）
+     * @return
+     * @throws Exception 
+     */
+    public Map<String,String> getWithdraw(@Query("account") String account,@Query("assetCode") String assetCode,@Query("amount") String amount,
+    		@Query("memo") String memo,@Query("mark") String mark,@Query("fee") String fee) throws Exception{
+    	if(StringUtils.isEmpty(account)) {
+    		throw new Exception("account参数为空");
+    	}
+    	if(StringUtils.isEmpty(assetCode)) {
+    		throw new Exception("assetCode参数为空");
+    	}
+    	if(StringUtils.isEmpty(amount)) {
+    		throw new Exception("amount参数为空");
+    	}
+    	return LBankJavaApiSdkServiceGenerator.executeSync(this.lBankJavaApiService.getWithdraw(account, assetCode, amount, memo, mark, fee));
+    }
+    
+    /**
+     * 撤销提币接口 (需要绑定IP,可以在lbank网页端api提现页面申请)
+     * 
+     * @param withdrawId	提币记录编号
+     * @return
+     * @throws Exception 
+     */
+    public Map<String,String> getWithdrawCancel(String withdrawId) throws Exception{
+    	if(StringUtils.isEmpty(withdrawId)) {
+    		throw new Exception("withdrawId参数为空");
+    	}
+    	return LBankJavaApiSdkServiceGenerator.executeSync(this.lBankJavaApiService.getWithdrawCancel(withdrawId));
+    }
+    
+    /**
+     * 提币记录接口 (需要绑定IP,可以在lbank网页端api提现页面申请)
+     * 
+     * @param assetCode	币种编号
+     * @param status	提币状态（0：全部，1：申请中，2：已撤销，3：提现失败，4：提现完成）
+     * @param pageNo	当前分页页码（默认：1）
+     * @param pageSize	每页大小（默认：20，最大100条）
+     * @return
+     * @throws Exception 
+     */
+    public Map<String,Object> getWithdraws(String assetCode,String status,String pageNo,String pageSize) throws Exception{
+    	if(StringUtils.isEmpty(status)) {
+    		throw new Exception("status参数为空");
+    	}
+    	return LBankJavaApiSdkServiceGenerator.executeSync(this.lBankJavaApiService.getWithdraws(assetCode, status, pageNo, pageSize));
     }
 
 }

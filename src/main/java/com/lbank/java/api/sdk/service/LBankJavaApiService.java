@@ -3,7 +3,6 @@ package com.lbank.java.api.sdk.service;
 import java.util.List;
 import java.util.Map;
 
-import com.lbank.java.api.sdk.entity.Trades;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -158,5 +157,64 @@ public interface LBankJavaApiService {
     @Headers("contentType:application/x-www-form-urlencoded")
     @GET("/v1/kline.do")
     Call<Object> getKline(@Query("symbol") String symbol, @Query("size") Integer size, @Query("type") String type, @Query("time") String time);
+    
+    
+    /**
+     * 美元对人民币的比例
+     * 
+     * @return
+     */
+    @Headers("contentType:application/x-www-form-urlencoded")
+    @GET("/v1/usdToCny.do")
+    Call<Map<String,String>> getUsdToCny();
+    
+    /**
+     * 币种提币参数接口
+     * 
+     * @param assetCode
+     * @return
+     */
+    @Headers("contentType:application/x-www-form-urlencoded")
+    @GET("/v1/withdrawConfigs.do")
+    Call<List<Map<String,String>>> getWithdrawConfigs(@Query("assetCode") String assetCode);
+    
+    /**
+     * 提币接口 (需要绑定IP,可以在lbank网页端api提现页面申请)
+     * 
+     * @param account	提币地址
+     * @param assetCode	提币币种
+     * @param amount	提币数量（对于neo，必须是整数）
+     * @param memo		对于bts、dct可能需要
+     * @param mark		用户备注(长度小于255)
+     * @param fee		提币手续费（单位：数量）
+     * @return
+     */
+    @Headers("contentType:application/x-www-form-urlencoded")
+    @POST("/v1/withdraw.do")
+    Call<Map<String,String>> getWithdraw(@Query("account") String account,@Query("assetCode") String assetCode,@Query("amount") String amount,
+    		@Query("memo") String memo,@Query("mark") String mark,@Query("fee") String fee);
+    
+    /**
+     * 撤销提币接口 (需要绑定IP,可以在lbank网页端api提现页面申请)
+     * 
+     * @param withdrawId	提币记录编号
+     * @return
+     */
+    @Headers("contentType:application/x-www-form-urlencoded")
+    @POST("/v1/withdrawCancel.do")
+    Call<Map<String,String>> getWithdrawCancel(@Query("withdrawId") String withdrawId);
+    
+    /**
+     * 提币记录接口 (需要绑定IP,可以在lbank网页端api提现页面申请)
+     * 
+     * @param assetCode	币种编号
+     * @param status	提币状态（0：全部，1：申请中，2：已撤销，3：提现失败，4：提现完成）
+     * @param pageNo	当前分页页码（默认：1）
+     * @param pageSize	每页大小（默认：20，最大100条）
+     * @return
+     */
+    @Headers("contentType:application/x-www-form-urlencoded")
+    @POST("/v1/withdraws.do")
+    Call<Map<String,Object>> getWithdraws(@Query("assetCode") String assetCode,@Query("status") String status,@Query("pageNo") String pageNo,@Query("pageSize") String pageSize);
 
 }
