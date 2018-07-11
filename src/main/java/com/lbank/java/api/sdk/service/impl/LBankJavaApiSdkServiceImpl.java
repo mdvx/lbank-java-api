@@ -143,7 +143,7 @@ public class LBankJavaApiSdkServiceImpl {
     }
 
     /**
-     * 获取LBank币币行情数据
+     * 获取LBank行情数据
      *
      * @param symbol 币对
      * @return
