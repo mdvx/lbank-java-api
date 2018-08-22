@@ -41,8 +41,12 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>JavaMD5</groupId>
+			<artifactId>JavaMD5</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

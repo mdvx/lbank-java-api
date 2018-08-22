@@ -5,5 +5,5 @@ package com.lbank.java.api.sdk.entity;
  */
 public class Contant {
     //根路径
-    public static final String BASE_URL = "http://api.lbank.info/";
+    public static final String BASE_URL = "http://172.16.1.92:8181/";
 }

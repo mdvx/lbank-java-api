@@ -7,9 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.lbank.java.api.sdk.service.LBankJavaApiService;
 
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 /**

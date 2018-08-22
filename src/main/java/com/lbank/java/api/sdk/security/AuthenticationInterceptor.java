@@ -36,7 +36,7 @@ public class AuthenticationInterceptor implements Interceptor {
         }
         //加密请求参数获取数字签名
         String payload = original.url().query();
-        String sign = LBankJavaApiSdkUtil.getMD5(payload, apiKey, secret);
+        String sign = LBankJavaApiSdkUtil.getSign(payload,apiKey,secret);
         //追加亲求参数
         HttpUrl signedUrl = original.url().newBuilder().addQueryParameter("api_key", apiKey).addQueryParameter("sign", sign).build();
         newRequestBuilder.url(signedUrl);

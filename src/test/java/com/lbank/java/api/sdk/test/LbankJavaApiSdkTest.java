@@ -12,8 +12,8 @@ import com.lbank.java.api.sdk.service.impl.LBankJavaApiSdkServiceImpl;
 public class LbankJavaApiSdkTest {
 
 	public static void main(String[] args) throws Exception {
-		String apiKey = "4fe12d15-2050-46b3-8f82-c0c3347872c8";
-		String SecretKey = "B31B4151214A264E4CB8AA37F3EA55B6";
+		String apiKey = "b75cdaa5-0c03-4fa4-bb22-d3658410cc24";
+		String SecretKey = "MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKZ4hyXkvIB6fKMkjeGm90LgowAs45RygjD/ddqDkEw0yeTACTNNUxQLIvp53/PKP8vK85fMnegnXNFoKCuXZHqb2Rrh5aSBzbt5xOLwEfGNwlQq0dVgtYdFCAST5PEQKUZiKHvIlE/9uBRHWlkRhZIWEsnNT3PrB76RCix9lfi9AgMBAAECgYARGPHwf2So4Wupqdh0o5xjnwS+wN2C4pvigmpNThPk78sIlnyba0asGVS3WwsYU95nhOmt3pMdQ+WxkDwH9h2Ym7NMhOXaYXwnIg4V7f9s+jg2BQ9RSIytSh0ChjTX6sc5boRAqSpsmdxNyw/H7r328MooVKYLFrz1wiLpeaNzAQJBANhoyKuPMj0asmzwGLr1qtrWSXOPaV5cmEsXHqtE+Hr920VleP701Ubz3cf+hkN/guLu269SLbh474ODhCFOvf0CQQDE7PJmUjbPWOlmFhfUYQpuHPswJ0qVTu/b6+32pSOJTEVa/uf1W4+ygqg9gHMOTaZGr4GxRuDFl2xkQPU+AcHBAkAJIVqeCluXQmIWwIZ6lNTRiMruijVq2sM+H8qWdUF6hu1SXzacox3AcZeA0Zc+j8mo42T3X6M4LjoEtW7ErPrNAkBGtwe8sp04DCeUHy7jdw11yTZybkmcIEKF6M0FGvwN27O0H4FQXFbXtY+QtkWax0uEapXaASfKDLxBrAnlAGCBAkAXlnmJVHeMr3prX5sq4n0dlUPrJlsBTj80qSvSD2kPs1HEaGZteE7PRI+vv7qPkbY4iLi0d/zhivwmAEBpdFM/";
 		LBankJavaApiSdkServiceImpl LBankJavaApiSdkServiceImpl = new LBankJavaApiSdkServiceImpl(apiKey,SecretKey);
 		//获取用户账户资产信息测试
 		Map<String, Object> userInfo = LBankJavaApiSdkServiceImpl.getUserInfo();
@@ -25,10 +25,10 @@ public class LbankJavaApiSdkTest {
 		Map<String, String> createOrder2 = LBankJavaApiSdkServiceImpl.createOrder("eth_btc", "sell", "0.011", "100");
 		System.out.println(createOrder2);
 		//撤销订单测试
-		Map<String, String> cancelOrder = LBankJavaApiSdkServiceImpl.cancelOrder("eth_btc", "2fa7d27f-8727-47e6-88d4-b7a56a29c764");
+		Map<String, String> cancelOrder = LBankJavaApiSdkServiceImpl.cancelOrder("eth_btc", "bfeadf5e-0960-45d0-8760-cea3c1f5f617");
 		System.out.println(cancelOrder);
 		//查询订单测试
-		Map<String, Object> ordersInfo = LBankJavaApiSdkServiceImpl.getOrdersInfo("eth_btc", "de067674-5f8b-456d-a418-f7c62933a56e");
+		Map<String, Object> ordersInfo = LBankJavaApiSdkServiceImpl.getOrdersInfo("eth_btc", "0d7269f7-0a0a-47aa-a9a1-2b08c3e8f539");
 		System.out.println(ordersInfo);
 		//查询订单历史测试
 		Map<String, Object> ordersInfoHistory = LBankJavaApiSdkServiceImpl.getOrdersInfoHistory("eth_btc","1", "10");

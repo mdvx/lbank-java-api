@@ -1,25 +1,26 @@
 package com.lbank.java.api.sdk.util;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
+
+import com.ndktools.javamd5.Mademd5;
 
 /**
  * @author chen.li
  */
 public class LBankJavaApiSdkUtil {
     /**
-     * 根据参数生成32位的MD5加密码
+     * 根据参数加密
      *
      * @param str
      * @param apiKey
      * @param secretKey
      * @return
      */
-    public static String getMD5(String str, String apiKey, String secretKey) {
+    public static String getSign(String str, String apiKey,String secretKey) {
         StringBuffer buffer = new StringBuffer();
+        String result = null;
         if (StringUtils.isNoneBlank(str)) {
             str = str + "&api_key=" + apiKey;
             String[] split = StringUtils.split(str, "&");
@@ -27,29 +28,13 @@ public class LBankJavaApiSdkUtil {
             for (int i = 0; i < split.length; i++) {
                 buffer.append(split[i]).append("&");
             }
+            result = buffer.toString();
+            result = result.substring(0,result.length()-1);
         } else {
-            buffer.append("api_key=").append(apiKey).append("&");
+        	result = buffer.append("api_key=").append(apiKey).toString();
         }
-        buffer.append("secret_key=").append(secretKey);
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(buffer.toString().getBytes());
-            byte b[] = md.digest();
-            int i;
-            StringBuffer buf = new StringBuffer("");
-            for (int offset = 0; offset < b.length; offset++) {
-                i = b[offset];
-                if (i < 0)
-                    i += 256;
-                if (i < 16)
-                    buf.append("0");
-                buf.append(Integer.toHexString(i));
-            }
-            String re_md5 = buf.toString();
-            return re_md5.toUpperCase();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return null;
+        Mademd5 md = new Mademd5();
+        StringBuilder sign = new StringBuilder(md.toMd5(result));
+        return  RSAUtil.sign(sign.toString(),secretKey);
     }
 }
