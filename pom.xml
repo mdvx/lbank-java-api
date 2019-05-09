@@ -45,6 +45,9 @@
 			<groupId>JavaMD5</groupId>
 			<artifactId>JavaMD5</artifactId>
 			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/JavaMD5.jar</systemPath>
+
 		</dependency>
 	</dependencies>
 	<build>
